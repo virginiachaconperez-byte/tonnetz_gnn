@@ -39,7 +39,7 @@ Use `harmonies/` for the reference chord labels. When preparing the data:
 - Keep the actual notes separate from the reference chords. Grace notes and tied
   notes also need handling during conversion.
 
-The preparation script and reusable tests are not implemented yet.
+Data preparation and dataset tests are not implemented yet.
 
 ## Licence and attribution
 
