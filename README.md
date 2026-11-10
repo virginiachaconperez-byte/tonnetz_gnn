@@ -1,56 +1,41 @@
 # Tonnetz GNN
 
-A project exploring how graph neural networks based on the Tonnetz can learn
-harmonic representations, predict the next chord, and explain which musical elements
-influence their predictions.
+A project studying whether harmonic relationships represented by the Tonnetz
+can improve next-chord prediction with graph neural networks. It also evaluates
+explanations of the model's predictions.
 
-The starting design combines a GNN, which processes relationships between notes,
-with a GRU, which processes their evolution over time.
+The project is in early development. Package installation is available;
+data preparation and experiments are not implemented yet.
 
-## Current status
+## Installation
 
-The project is in its design stage. The repository contains proposals and a
-directory structure; there are no datasets, implemented models, tests, or
-executable experiments yet.
+Requires Git and Python 3.12.
 
-## Getting started
+Clone the repository:
 
-### Requirements
+```sh
+git clone https://github.com/virginiachaconperez-byte/tonnetz_gnn.git TonnetzGNN
+cd TonnetzGNN
+```
 
-- Git.
-- Python 3.12 for the planned implementation.
-
-### Create a Python environment
-
-From the repository root, on macOS or Linux:
+On macOS or Linux:
 
 ```sh
 python3.12 -m venv .venv
 source .venv/bin/activate
-python --version
+python -m pip install -e .
+python -c "import tonnetz_gnn; print(tonnetz_gnn.__file__)"
 ```
 
 On Windows, using PowerShell:
 
 ```powershell
 py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe --version
+.\.venv\Scripts\python.exe -m pip install -e .
+.\.venv\Scripts\python.exe -c "import tonnetz_gnn; print(tonnetz_gnn.__file__)"
 ```
 
-On Windows, you can use `.\.venv\Scripts\python.exe` for every Python command
-without activating the environment. On macOS and Linux, use `python` after
-activation, or `.venv/bin/python` directly.
-
-### Dependencies
-
-The current repository has no Python dependencies to install.
-
-PyTorch, PyTorch Geometric, and a symbolic-music library are candidates for the
-implementation; they are not required by the current repository.
-
-### Experiments
-
-Training, evaluation, and test commands are not available yet.
+The last command should print the path to `src/tonnetz_gnn/__init__.py`.
 
 ## Repository structure
 
@@ -58,11 +43,13 @@ Training, evaluation, and test commands are not available yet.
 TonnetzGNN/
 ├── README.md
 ├── .gitignore
+├── pyproject.toml
 ├── docs/
 │   ├── proposal-en.md
 │   └── proposal-es.md
 ├── src/
 │   └── tonnetz_gnn/
+│       └── __init__.py
 ├── tests/
 ├── data/
 │   └── README.md
@@ -73,34 +60,18 @@ TonnetzGNN/
     └── sections/
 ```
 
-## Datasets and generated files
+## Data
 
-The dataset has not been selected. [Dataset information](data/README.md) describes
-the planned storage layout.
+The first pilot uses the DCML Annotated Mozart Sonatas corpus.
+Dataset files are not included in this repository. See
+[dataset instructions](data/README.md) for download steps, file locations,
+and licensing information.
 
-Downloaded data belongs in `data/raw/`, processed data in `data/processed/`,
-and experiment results, checkpoints, and logs in `outputs/`. These locations
-are ignored by Git.
+## Documentation
 
-Small, redistributable test fixtures belong in `tests/fixtures/`. Local
-credentials and environment files are also ignored.
-
-## Code organization
-
-The implementation belongs in `src/tonnetz_gnn/`, with tests in `tests/`.
-The planned tests cover dataset loading, metadata transformations, annotations,
-and format conversions. Evaluation will use separate pieces from training,
-with known versions and transpositions grouped in the same split.
-
-## Report and proposals
-
-The project proposal is available in [English](docs/proposal-en.md) and
-[Spanish](docs/proposal-es.md).
-
-The [project report](report/README.md) belongs in `report/`, with section
-sources in `report/sections/` and figures in `report/figures/`.
+- [Project proposal in English](docs/proposal-en.md)
+- [Project proposal in Spanish](docs/proposal-es.md)
 
 ## License
 
-A project license has not been selected. Dataset licensing is separate from
-the code license.
+A code license has not been selected. Dataset licensing is separate.
