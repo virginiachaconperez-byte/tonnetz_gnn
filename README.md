@@ -71,12 +71,19 @@ On Windows, using PowerShell:
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
+GitHub Actions runs these tests on Windows with Python 3.12 after each push.
+Results appear in the repository's **Actions** tab, where the workflow can
+also be started manually.
+
 ## Repository structure
 
 ```text
 TonnetzGNN/
 ├── README.md
 ├── .gitignore
+├── .github/
+│   └── workflows/
+│       └── windows-tests.yml
 ├── pyproject.toml
 ├── configs/
 │   └── pilot.toml

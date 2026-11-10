@@ -1,0 +1,38 @@
+name: Windows tests
+
+"on":
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Create the project environment
+        run: python -m venv .venv
+
+      - name: Install the project
+        run: .\.venv\Scripts\python.exe -m pip install -e .
+
+      - name: Check the package import
+        run: .\.venv\Scripts\python.exe -c "import tonnetz_gnn; print(tonnetz_gnn.__file__)"
+
+      - name: Run the tests
+        run: .\.venv\Scripts\python.exe -m unittest discover -s tests -v
